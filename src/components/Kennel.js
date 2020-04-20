@@ -1,12 +1,12 @@
 import React from "react";
 import Animal from "./animal/Animal";
+import Employee from "./employee/Employee";
+import Location from "./location/Location";
+import Customer from "./customer/Customer";
 import "./animal/Animal.css";
-import Customer from "./Customer";
-import Employee from "./Employee";
-import Location from "./Location";
-import "./Location.css";
-import "./Employee.css";
-import "./Customer.css";
+import "./employee/Employee.css";
+import "./location/Location.css";
+import "./customer/Customer.css";
 
 export default () => (
   <>
