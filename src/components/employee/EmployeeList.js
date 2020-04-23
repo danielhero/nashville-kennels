@@ -15,10 +15,7 @@ export default () => {
   return (
     <>
       <h2>Employees</h2>
-
-      <div className="fakeLink href" onClick={toggle}>
-        New Employee
-      </div>
+      <Button onClick={toggle}>New Employee</Button>
 
       <ul className="employees">
         {employees.map((employee) => {
@@ -31,7 +28,7 @@ export default () => {
       </ul>
 
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>New Employee</ModalHeader>
+        <ModalHeader toggle={toggle}>Add Employee</ModalHeader>
         <ModalBody>
           <EmployeeForm toggler={toggle} />
         </ModalBody>
