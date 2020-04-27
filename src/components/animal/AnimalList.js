@@ -29,7 +29,7 @@ export default () => {
         Make Appointment
       </Button>
 
-      <ul className="employees">
+      <ul className="animals">
         {animals.map((ani) => {
           const matchingLocation = locations.find(
             (loc) => loc.id === ani.locationId

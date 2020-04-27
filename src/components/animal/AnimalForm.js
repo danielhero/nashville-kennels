@@ -1,7 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { AnimalContext } from "./AnimalProvider";
 import { LocationContext } from "../location/LocationProvider";
-import { CustomerContext } from "../customer/CustomerProvider";
 import "./Animal.css";
 
 export default (props) => {
