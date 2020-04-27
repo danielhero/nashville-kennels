@@ -4,13 +4,22 @@ import Employee from "./Employee";
 import { LocationContext } from "../location/LocationProvider";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import EmployeeForm from "./EmployeeForm";
+import { EditEmployeeForm } from "./EditEmployeeForm";
 
 export default () => {
   const { employees } = useContext(EmployeeContext);
   const { locations } = useContext(LocationContext);
 
+  const [selectedEmployee, setEmployee] = useState({
+    employee: { id: 0 },
+    location: null,
+  });
+
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
+
+  const [editModal, setEditModal] = useState(false);
+  const toggleEdit = () => setEditModal(!editModal);
 
   return (
     <>
@@ -22,7 +31,17 @@ export default () => {
           const loc = locations.find((l) => l.id === employee.locationId);
 
           return (
-            <Employee key={employee.id} location={loc} employee={employee} />
+            <div>
+              <Employee key={employee.id} location={loc} employee={employee} />
+              <Button
+                onClick={() => {
+                  toggleEdit();
+                  setEmployee({ employee, loc });
+                }}
+              >
+                Update Employee
+              </Button>
+            </div>
           );
         })}
       </ul>
@@ -31,6 +50,18 @@ export default () => {
         <ModalHeader toggle={toggle}>Add Employee</ModalHeader>
         <ModalBody>
           <EmployeeForm toggler={toggle} />
+        </ModalBody>
+      </Modal>
+      <Modal isOpen={editModal} toggle={toggleEdit}>
+        <ModalHeader toggle={toggleEdit}>
+          {selectedEmployee.employee.name}
+        </ModalHeader>
+        <ModalBody>
+          <EditEmployeeForm
+            key={selectedEmployee.employee.id}
+            toggleEdit={toggleEdit}
+            {...selectedEmployee}
+          />
         </ModalBody>
       </Modal>
     </>
